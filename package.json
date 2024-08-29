@@ -25,6 +25,8 @@
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^2.27.3",
+		"@faker-js/faker": "9.0.0-rc.1",
+		"@fontsource-variable/jetbrains-mono": "^5.0.22",
 		"@sveltejs/adapter-auto": "^3.2.4",
 		"@sveltejs/kit": "^2.5.24",
 		"@sveltejs/vite-plugin-svelte": "4.0.0-next.6",

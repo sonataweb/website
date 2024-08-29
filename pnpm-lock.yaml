@@ -15,6 +15,12 @@ importers:
       '@antfu/eslint-config':
         specifier: ^2.27.3
         version: 2.27.3(@typescript-eslint/utils@8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4))(@vue/compiler-sfc@3.4.38)(eslint-plugin-svelte@2.43.0(eslint@9.9.1(jiti@1.21.6))(svelte@5.0.0-next.239))(eslint@9.9.1(jiti@1.21.6))(svelte-eslint-parser@0.41.0(svelte@5.0.0-next.239))(svelte@5.0.0-next.239)(typescript@5.5.4)
+      '@faker-js/faker':
+        specifier: 9.0.0-rc.1
+        version: 9.0.0-rc.1
+      '@fontsource-variable/jetbrains-mono':
+        specifier: ^5.0.22
+        version: 5.0.22
       '@sveltejs/adapter-auto':
         specifier: ^3.2.4
         version: 3.2.4(@sveltejs/kit@2.5.24(@sveltejs/vite-plugin-svelte@4.0.0-next.6(svelte@5.0.0-next.239)(vite@5.4.2))(svelte@5.0.0-next.239)(vite@5.4.2))
@@ -342,6 +348,13 @@ packages:
   '@eslint/object-schema@2.1.4':
     resolution: {integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@faker-js/faker@9.0.0-rc.1':
+    resolution: {integrity: sha512-d9uL+O7Bud4W0axuHYxjCsfwazwo6iPRbgDkIPgWhtxpnziHqbFafOuKubnQ++4V31dI9NYYkajzGNJADHas4A==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
+
+  '@fontsource-variable/jetbrains-mono@5.0.22':
+    resolution: {integrity: sha512-2LZQFb37H9iUY92qrhqjvrrkBPROdmBy5MMDgQX+FGeHdVE2WwvGt4lOpxOAy0L/bwE2Y0UCe/eb/tOs1kaTYQ==}
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -2447,6 +2460,10 @@ snapshots:
   '@eslint/js@9.9.1': {}
 
   '@eslint/object-schema@2.1.4': {}
+
+  '@faker-js/faker@9.0.0-rc.1': {}
+
+  '@fontsource-variable/jetbrains-mono@5.0.22': {}
 
   '@humanwhocodes/module-importer@1.0.1': {}
 

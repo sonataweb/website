@@ -11,6 +11,7 @@ export default {
 					`InterVariable, ${defaultTheme.fontFamily.sans.join(", ")}`,
 					{ fontFeatureSettings: "'cv01', 'cv11', 'ss01'" },
 				],
+				mono: ["'JetBrains Mono Variable'", ...defaultTheme.fontFamily.mono],
 			},
 		},
 	},
