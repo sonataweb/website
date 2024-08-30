@@ -109,5 +109,9 @@
 			var(--cover-art-color, theme("colors.gray.50")),
 			theme("colors.gray.50")
 		);
+
+		@screen lg {
+			top: var(--header-height);
+		}
 	}
 </style>
