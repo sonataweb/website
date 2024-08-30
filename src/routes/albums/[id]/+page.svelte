@@ -6,19 +6,23 @@
 	let color = $state<string>();
 	let coverArt: HTMLImageElement;
 
-	onMount(async () => {
-		const ctx = document.createElement("canvas").getContext("2d")!;
+	onMount(() => {
+		const canvas = document.createElement("canvas");
+		const ctx = canvas.getContext("2d")!;
+
 		ctx.drawImage(coverArt, 0, 0, 1, 1);
 
-		const { data } = ctx.getImageData(0, 0, 1, 1);
-		const parts = (1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2];
+		const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+		const parts = (1 << 24) + (r << 16) + (g << 8) + b;
 
 		color = `#${parts.toString(16).slice(1)}`;
+
+		return () => canvas.remove();
 	});
 </script>
 
 <aside
-	class="flex p-6 lg:fixed lg:inset-y-0 lg:left-0 lg:min-h-svh lg:max-w-md lg:flex-col lg:overflow-y-auto lg:p-12"
+	class="flex p-6 shadow-inner lg:fixed lg:inset-y-0 lg:left-0 lg:min-h-svh lg:max-w-md lg:flex-col lg:overflow-y-auto lg:p-12"
 	style:--cover-art-color={color}
 >
 	<div class="flex flex-col">
