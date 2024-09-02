@@ -87,7 +87,7 @@
 						<footer class="mt-4 flex items-center gap-4">
 							<a
 								class="text-sm font-medium"
-								href="/tracks/{track.id}/lyrics"
+								href="/tracks/{track.id}"
 								style:color={color.fg}
 							>
 								Lyrics
