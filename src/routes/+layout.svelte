@@ -12,6 +12,6 @@
 
 <Header />
 
-<main>
+<main style:margin-top="var(--header-height)">
 	{@render children()}
 </main>

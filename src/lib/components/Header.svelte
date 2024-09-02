@@ -10,7 +10,7 @@
 </script>
 
 <header
-	class="z-50 flex items-center justify-between bg-gray-50 px-8 py-2 shadow-sm"
+	class="fixed top-0 z-50 flex w-full items-center justify-between bg-gray-50 px-8 py-2 shadow-sm"
 	bind:this={header}
 >
 	<div class="flex items-center gap-x-4">
