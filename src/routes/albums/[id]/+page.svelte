@@ -1,9 +1,10 @@
 <script lang="ts">
+	import tinycolor from "tinycolor2";
 	import { onMount } from "svelte";
 
 	const { data } = $props();
 
-	let color = $state<string>();
+	const color = $state({ bg: "", fg: "" });
 	let coverArt: HTMLImageElement;
 
 	onMount(() => {
@@ -15,7 +16,9 @@
 		const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
 		const parts = (1 << 24) + (r << 16) + (g << 8) + b;
 
-		color = `#${parts.toString(16).slice(1)}`;
+		const base = tinycolor(`#${parts.toString(16).slice(1)}`);
+		color.bg = base.saturate(50).toString();
+		color.fg = base.lighten(5).saturate(95).toString();
 
 		return () => canvas.remove();
 	});
@@ -23,7 +26,7 @@
 
 <aside
 	class="flex p-6 shadow-inner lg:fixed lg:inset-y-0 lg:left-0 lg:min-h-svh lg:max-w-md lg:flex-col lg:overflow-y-auto lg:p-12"
-	style:--cover-art-color={color}
+	style:--cover-art-color={color.bg}
 >
 	<div class="flex flex-col">
 		<div class="max-w-48 overflow-hidden rounded-xl shadow-lg lg:max-w-none lg:rounded-2xl">
@@ -85,14 +88,18 @@
 							<a
 								class="text-sm font-medium"
 								href="/tracks/{track.id}/lyrics"
-								style:color
+								style:color={color.fg}
 							>
 								Lyrics
 							</a>
 
 							<div class="h-4 w-px bg-gray-900" role="separator"></div>
 
-							<button class="text-sm font-medium" style:color onclick={() => {}}>
+							<button
+								class="text-sm font-medium"
+								style:color={color.fg}
+								onclick={() => {}}
+							>
 								Credits
 							</button>
 						</footer>
@@ -107,7 +114,11 @@
 	aside {
 		background: linear-gradient(
 			var(--cover-art-color, theme("colors.gray.50")),
-			theme("colors.gray.50")
+			color-mix(
+				in srgb,
+				var(--cover-art-color, theme("colors.gray.50")),
+				theme("colors.gray.50") 85%
+			)
 		);
 
 		@screen lg {
