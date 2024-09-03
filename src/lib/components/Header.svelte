@@ -18,23 +18,12 @@
 			<img src="https://placehold.co/64" alt="Logo" />
 		</a>
 
-		<div>
-			<label class="sr-only" for="search">Email</label>
-
-			<div class="relative rounded-md shadow-sm">
-				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
-					<Search class="size-4 text-gray-400" />
-				</div>
-
-				<input
-					id="search"
-					class="w-80 rounded-md border-0 py-1.5 pl-10 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
-					type="search"
-					name="search"
-					placeholder="Search"
-				/>
-			</div>
-		</div>
+		<button
+			class="flex h-8 w-80 items-center gap-x-2 rounded-md border-0 py-1.5 pl-3.5 text-left text-sm text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset"
+		>
+			<Search class="size-4" />
+			Search
+		</button>
 	</div>
 
 	<div class="flex items-center gap-x-4">
