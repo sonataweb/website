@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Search from "lucide-svelte/icons/search";
 	import { onMount } from "svelte";
+	import SearchDialog, { searchOpen } from "./Search.svelte";
 
 	let header: HTMLElement;
 
@@ -20,6 +21,8 @@
 
 		<button
 			class="flex h-8 w-80 items-center gap-x-2 rounded-md border-0 py-1.5 pl-3.5 text-left text-sm text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset"
+			type="button"
+			onclick={() => (searchOpen.value = true)}
 		>
 			<Search class="size-4" />
 			Search
@@ -30,3 +33,5 @@
 		<!-- ... -->
 	</div>
 </header>
+
+<SearchDialog />
