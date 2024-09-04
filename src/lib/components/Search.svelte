@@ -53,6 +53,7 @@
 	overlayClasses="fixed inset-0 z-50 bg-black/50 backdrop-blur-[2px]"
 	overlayTransition={fade}
 	overlayTransitionConfig={{ duration: 250 }}
+	shouldFilter={false}
 	bind:open={searchOpen.value}
 >
 	<div class="flex items-center border-b border-gray-500/20 px-4">
