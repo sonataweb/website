@@ -6,6 +6,12 @@ export default {
 	darkMode: "selector",
 	theme: {
 		extend: {
+			colors: {
+				"cover-art": {
+					bg: "var(--cover-art-bg)",
+					fg: "var(--cover-art-fg)",
+				},
+			},
 			fontFamily: {
 				sans: [
 					`InterVariable, ${defaultTheme.fontFamily.sans.join(", ")}`,

@@ -1,41 +1,15 @@
 <script lang="ts">
-	import tinycolor from "tinycolor2";
-	import { onMount } from "svelte";
+	import { color } from "$lib/actions";
 
 	const { data } = $props();
-
-	const color = $state({ bg: "", fg: "" });
-	let coverArt: HTMLImageElement;
-
-	onMount(() => {
-		const canvas = document.createElement("canvas");
-		const ctx = canvas.getContext("2d")!;
-
-		ctx.drawImage(coverArt, 0, 0, 1, 1);
-
-		const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
-		const parts = (1 << 24) + (r << 16) + (g << 8) + b;
-
-		const base = tinycolor(`#${parts.toString(16).slice(1)}`);
-		color.bg = base.saturate(50).toString();
-		color.fg = base.lighten(5).saturate(95).toString();
-
-		return () => canvas.remove();
-	});
 </script>
 
 <aside
 	class="flex p-6 shadow-inner lg:fixed lg:inset-y-0 lg:left-0 lg:min-h-svh lg:max-w-md lg:flex-col lg:overflow-y-auto lg:p-12"
-	style:--cover-art-color={color.bg}
 >
 	<div class="flex flex-col">
 		<div class="max-w-48 overflow-hidden rounded-xl shadow-lg lg:max-w-none lg:rounded-2xl">
-			<img
-				src={data.album.cover_art.default}
-				alt=""
-				crossorigin="anonymous"
-				bind:this={coverArt}
-			/>
+			<img src={data.album.cover_art.default} alt="" crossorigin="anonymous" use:color />
 		</div>
 
 		<div class="mt-6">
@@ -86,9 +60,8 @@
 
 						<footer class="mt-4 flex items-center gap-4">
 							<a
-								class="text-sm font-medium"
+								class="text-sm font-medium text-cover-art-fg"
 								href="/tracks/{track.id}"
-								style:color={color.fg}
 							>
 								Lyrics
 							</a>
@@ -96,8 +69,7 @@
 							<div class="h-4 w-px bg-gray-900" role="separator"></div>
 
 							<button
-								class="text-sm font-medium"
-								style:color={color.fg}
+								class="text-sm font-medium text-cover-art-fg"
 								onclick={() => {}}
 							>
 								Credits
@@ -113,10 +85,10 @@
 <style>
 	aside {
 		background: linear-gradient(
-			var(--cover-art-color, theme("colors.gray.50")),
+			var(--cover-art-bg, theme("colors.gray.50")),
 			color-mix(
 				in srgb,
-				var(--cover-art-color, theme("colors.gray.50")),
+				var(--cover-art-bg, theme("colors.gray.50")),
 				theme("colors.gray.50") 85%
 			)
 		);
