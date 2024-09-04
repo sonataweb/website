@@ -4,6 +4,7 @@
 
 <script lang="ts">
 	import type { Icon } from "lucide-svelte";
+	import ArrowBigUp from "lucide-svelte/icons/arrow-big-up";
 	import Disc3 from "lucide-svelte/icons/disc-3";
 	import DiscAlbum from "lucide-svelte/icons/disc-album";
 	import Search from "lucide-svelte/icons/search";
@@ -22,7 +23,7 @@
 
 	const shortcuts: Record<string, Shortcut> = {
 		g: { href: "/albums/new", icon: DiscAlbum, text: "New album" },
-		n: { href: "/tracks/new", icon: Disc3, text: "New track" },
+		b: { href: "/tracks/new", icon: Disc3, text: "New track" },
 	};
 
 	async function handleKey(event: KeyboardEvent) {
@@ -72,7 +73,7 @@
 			<Command.Item asChild let:action let:attrs>
 				<a
 					class="flex items-start rounded-md px-3 py-2 hover:bg-gray-100"
-					href="/tracks/123"
+					href="/albums/123"
 					{...attrs}
 					use:action
 				>
