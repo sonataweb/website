@@ -13,6 +13,7 @@
 	import { Command } from "cmdk-sv";
 	import { fade } from "svelte/transition";
 	import { goto } from "$app/navigation";
+	import { page } from "$app/stores";
 	import { grow } from "$lib/transition";
 
 	interface Shortcut {
@@ -56,6 +57,7 @@
 >
 	<div class="flex items-center border-b border-gray-500/20 px-4">
 		<Search class="mr-3 size-4 shrink-0 text-gray-400" />
+
 		<Command.Input
 			class="h-11 w-full border-0 bg-transparent text-sm outline-0 placeholder:text-gray-400"
 			placeholder="Search"
@@ -71,24 +73,25 @@
 		<!-- recent searches, otherwise show trending -->
 		<Command.Group class="p-2" heading="Trending">
 			<Command.Item asChild let:action let:attrs>
-				<a
-					class="flex items-start rounded-md px-3 py-2 hover:bg-gray-100"
-					href="/albums/123"
-					{...attrs}
-					use:action
-				>
-					<div class="size-12 overflow-hidden rounded">
-						<img
-							src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/aa/db/1d/aadb1d21-85f1-057a-f308-6f0ac84809dc/196589611031.jpg/600x600bb.jpg"
-							alt=""
-						/>
-					</div>
+				{#each $page.data.trending as track}
+					<a
+						class="flex items-start rounded-md px-3 py-2 hover:bg-gray-100"
+						href="/tracks/{track.id}"
+						{...attrs}
+						use:action
+					>
+						<div class="size-12 overflow-hidden rounded">
+							<img src={track.cover_art.default} alt="" />
+						</div>
 
-					<div class="ml-2 flex flex-col">
-						<span class="font-semibold">hypochondriac</span>
-						<span class="text-xs text-gray-400">brakence &bullet; 2022</span>
-					</div>
-				</a>
+						<div class="ml-2 flex flex-col">
+							<span class="font-semibold">{track.name}</span>
+							<span class="text-xs text-gray-400">
+								{track.artists[0].name} &bullet; {track.release_date.getFullYear()}
+							</span>
+						</div>
+					</a>
+				{/each}
 			</Command.Item>
 
 			<!-- ... -->
