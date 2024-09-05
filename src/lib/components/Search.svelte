@@ -28,15 +28,12 @@
 	};
 
 	async function handleKey(event: KeyboardEvent) {
-		const isModifier = event.metaKey || event.ctrlKey;
-
-		if (event.key === "k" && isModifier) {
+		if (event.key === "/") {
 			event.preventDefault();
-
-			searchOpen.value = !searchOpen.value;
+			searchOpen.value = true;
 		} else if (event.key === "Escape") {
 			searchOpen.value = false;
-		} else if (event.key in shortcuts && isModifier) {
+		} else if (event.key in shortcuts && (event.metaKey || event.ctrlKey)) {
 			event.preventDefault();
 			searchOpen.value = false;
 
