@@ -1,9 +1,10 @@
-export async function load() {
+export async function load({ locals }) {
 	// call location is tentative
 	// await fetch("https://.../trending");
 
 	// tracks only; simplified for demo purposes
 	return {
+		user: locals.user,
 		trending: [
 			{
 				id: "",

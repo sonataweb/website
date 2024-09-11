@@ -9,7 +9,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"db:generate": "dotenvx run -- drizzle-kit generate",
+		"db:migrate": "dotenvx run -- drizzle-kit migrate"
 	},
 	"prettier": {
 		"tabWidth": 4,
@@ -21,21 +23,30 @@
 		]
 	},
 	"dependencies": {
+		"@lucia-auth/adapter-drizzle": "^1.1.0",
+		"arctic": "^1.9.2",
 		"cmdk-sv": "^0.0.18",
+		"drizzle-orm": "^0.33.0",
+		"lucia": "^3.2.0",
 		"lucide-svelte": "^0.438.0",
 		"mode-watcher": "^0.4.1",
+		"oslo": "^1.2.1",
+		"postgres": "^3.4.4",
 		"tinycolor2": "^1.6.0"
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^3.0.0",
+		"@dotenvx/dotenvx": "^1.14.0",
 		"@faker-js/faker": "9.0.0-rc.1",
 		"@fontsource-variable/jetbrains-mono": "^5.0.22",
 		"@sveltejs/adapter-auto": "^3.2.4",
 		"@sveltejs/kit": "^2.5.25",
 		"@sveltejs/vite-plugin-svelte": "4.0.0-next.6",
 		"@types/eslint": "^9.6.1",
+		"@types/node": "^22.5.4",
 		"@types/tinycolor2": "^1.4.6",
 		"autoprefixer": "^10.4.20",
+		"drizzle-kit": "^0.24.2",
 		"eslint": "^9.9.1",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.43.0",
